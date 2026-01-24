@@ -156,7 +156,25 @@ cat >> $CONF <<EOF
 EOF
 
 # =============================
-# 5. 启动服务
+# 5. 创建 systemd 服务文件
+# =============================
+echo "📄 创建 systemd 服务文件..."
+cat > /etc/systemd/system/sing-box.service <<EOF
+[Unit]
+Description=sing-box
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/sing-box run -c /etc/sing-box/config.json
+Restart=always
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# =============================
+# 6. 启动服务
 # =============================
 echo "🚀 启动服务..."
 systemctl daemon-reload
@@ -164,7 +182,7 @@ systemctl enable sing-box
 systemctl restart sing-box
 
 # =============================
-# 6. 输出结果
+# 7. 输出结果
 # =============================
 echo ""
 echo "======================================"
