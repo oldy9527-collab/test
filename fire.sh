@@ -29,7 +29,10 @@ sudo ufw allow 52984/udp
 # 6. 放行 Vless-ws-enc（TCP）
 sudo ufw allow 32958/tcp
 
-# 7. 查看当前防火墙状态
+# 7. 放行 AnyTLS（TCP）
+sudo ufw allow 33958/tcp
+
+# 8. 查看当前防火墙状态
 echo "当前防火墙状态："
 sudo ufw status verbose
 
