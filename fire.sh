@@ -1,16 +1,19 @@
+# 0. 安装防火墙
+sudo apt update
+sudo apt install ufw -y
+
 # 1. 启用UFW防火墙
 echo "正在启用UFW防火墙..."
 sudo ufw enable
 
-# 2. 设置默认策略为拒绝（屏蔽所有未明确允许的连接）
+# 2. 允许SSH（22端口）和HTTPS（443端口）流量
+echo "开放SSH端口（22）和HTTPS端口（443）..."
+sudo ufw allow 22/tcp
+
+# 3. 设置默认策略为拒绝（屏蔽所有未明确允许的连接）
 echo "设置默认策略为拒绝..."
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-
-
-# 3. 允许SSH（22端口）和HTTPS（443端口）流量
-echo "开放SSH端口（22）和HTTPS端口（443）..."
-sudo ufw allow 22/tcp
 
 # 4. 放行 Hysteria2（UDP）
 sudo ufw allow 38124/udp
