@@ -26,10 +26,10 @@ sudo ufw allow 40193/udp
 sudo ufw allow 46652/udp
 sudo ufw allow 52984/udp
 
-# 6. 放行 Vless-ws-enc（TCP）
+# 6. 放行 Vless-reality（TCP）
 sudo ufw allow 32958/tcp
 
-# 7. 放行 AnyTLS（TCP）
+# 7. 放行 Vless-ws（TCP）
 sudo ufw allow 33958/tcp
 
 # 8. 查看当前防火墙状态
